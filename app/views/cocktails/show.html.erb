@@ -2,6 +2,12 @@
 
 <h1><%= @cocktail.name  %></h1>
 
+<% if @cocktail.photo.present? %>
+<%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :thumb %>
+<% else %>
+<img src="https://source.unsplash.com/1600x900/?<%=@cocktail.name  %>" alt="">
+<% end %>
+
 <p>
   <strong>Ingredients</strong>
   <ol>
@@ -14,4 +20,5 @@
   </ol>
 </p>
 
-<%= link_to "Add a dose", new_cocktail_dose_path(@cocktail) %>
+<%= link_to "Add a dose", new_cocktail_dose_path(@cocktail) %> |
+<%= link_to "Back", cocktails_path %>
